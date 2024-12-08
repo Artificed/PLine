@@ -2,12 +2,14 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
-import Sidebar from "./layouts/sidebar";
+import SideMenu from "./layouts/menus/SideMenu";
+import ChatSection from "./layouts/chat/ChatSection";
 
 function App() {
   return (
-    <div>
-      <Sidebar />
+    <div className="flex h-screen">
+      <SideMenu />
+      <ChatSection />
     </div>
   );
 }

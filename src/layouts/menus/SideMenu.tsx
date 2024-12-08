@@ -1,6 +1,6 @@
-export default function Sidebar() {
+export default function SideMenu() {
   return (
-    <div className="flex flex-col items-center bg-[#232323] h-screen w-16 py-4">
+    <div className="flex flex-col items-center bg-[#232323] w-16 py-4">
       <div className="gap-6 flex flex-col items-center">
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="gray" viewBox="0 0 24 24" strokeWidth={1.5} stroke="none" className="size-7">
