@@ -8,7 +8,7 @@ const ChatDisplay: React.FC = () => {
         <p className="text-sm">Keep Memo</p>
         <p className="text-[0.7rem] text-white text-opacity-50">Test</p>
       </div>
-      <p className="text-[0.7rem] text-white text-opacity-50 mt-2.5 mr-[1.1rem] ml-auto">
+      <p className="text-[0.7rem] text-white text-opacity-50 mt-3 mr-5 ml-auto">
         10:24 PM
       </p>
     </div>
