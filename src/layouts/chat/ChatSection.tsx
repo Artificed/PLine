@@ -2,7 +2,7 @@ import TopMenu from "../menus/TopMenu";
 import ChatContent from "./ChatContent";
 import ChatList from "./ChatList";
 
-export default function ChatSection() {
+const ChatSection: React.FC = () => {
   return (
     <div className="bg-[#2D2E30] flex flex-1 flex-col h-full">
       <TopMenu />
@@ -13,3 +13,5 @@ export default function ChatSection() {
     </div>
   );
 }
+
+export default ChatSection;

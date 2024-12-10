@@ -1,4 +1,4 @@
-export default function SideMenu() {
+const SideMenu: React.FC = () => {
   return (
     <div className="flex flex-col items-center bg-[#232323] w-16 py-4">
       <div className="gap-6 flex flex-col items-center mt-3">
@@ -38,3 +38,6 @@ export default function SideMenu() {
     </div>
   );
 }
+
+
+export default SideMenu;

@@ -1,4 +1,4 @@
-export default function TopMenu() {
+const TopMenu: React.FC = () => {
   return (
     <div className="flex items-center text-white text-opacity-50 text-[0.825rem] gap-5 py-3 px-3 border-b border-white/5">
       <p>All</p>
@@ -12,3 +12,5 @@ export default function TopMenu() {
     </div>
   );
 }
+
+export default TopMenu;
