@@ -4,6 +4,6 @@ const ChatContent: React.FC = () => {
       <h1>ChatContent</h1>
     </div>
   );
-}
+};
 
 export default ChatContent;
