@@ -4,7 +4,7 @@ import ChatDisplay from "../../components/ChatDisplay";
 const ChatList: React.FC = () => {
   return (
     <div
-      className="flex flex-col w-1/3 overflow-y-auto border-r border-white/10"
+      className="flex flex-col w-1/2 overflow-y-auto border-r border-white/10"
       style={{ height: "calc(100vh - 3rem)" }}
     >
       <ChatSearch />

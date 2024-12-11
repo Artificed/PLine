@@ -1,7 +1,9 @@
+import ChatHeader from "../../components/ChatHeader";
+
 const ChatContent: React.FC = () => {
   return (
-    <div>
-      <h1>ChatContent</h1>
+    <div className="w-full">
+      <ChatHeader />
     </div>
   );
 };
