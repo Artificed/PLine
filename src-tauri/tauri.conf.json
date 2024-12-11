@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "pline",
-        "width": 1000,
-        "height": 1000
+        "width": 605,
+        "height": 445
       }
     ],
     "security": {
