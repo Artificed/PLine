@@ -1,6 +1,11 @@
+import { open } from "@tauri-apps/plugin-shell";
 import login_qr from "../assets/images/defaults/login_qr.png";
 
 const QRLogin: React.FC = () => {
+  const openLineHelp = async () => {
+    await open("https://help.line.me/line/mac/categoryId/20009670?lang=en");
+  };
+
   return (
     <div className="w-[36%] flex flex-col items-center">
       <div className="flex w-full justify-end gap-2 mr-6 translate-y-1">
@@ -10,7 +15,8 @@ const QRLogin: React.FC = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="gray"
-          className="size-5"
+          className="size-5 hover:cursor-pointer"
+          onClick={openLineHelp}
         >
           <path
             strokeLinecap="round"

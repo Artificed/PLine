@@ -24,13 +24,26 @@ const LoginForm: React.FC = () => {
       </button>
       <div className="flex items-center justify-between w-[17rem]">
         <div className="flex items-center">
-          <input type="checkbox" id="auto-login" className="mr-2" />
-          <label htmlFor="auto-login">Log me in automatically</label>
+          <input
+            type="checkbox"
+            id="auto-login"
+            className="mr-2 hover:cursor-pointer"
+          />
+          <label
+            htmlFor="auto-login"
+            className="text-white text-opacity-50 hover:cursor-pointer"
+          >
+            Log me in automatically
+          </label>
         </div>
-        <a className="text-right">Reset password</a>
+        <a className="text-white text-opacity-50 text-right hover:cursor-pointer">
+          Reset password
+        </a>
       </div>
       <div className="flex items-center justify-between w-[17rem] mb-6 mt-auto">
-        <a className="text-right">Log in with my smartphone {">"}</a>
+        <a className="text-right hover:cursor-pointer">
+          Log in with my smartphone {">"}
+        </a>
       </div>
     </div>
   );
