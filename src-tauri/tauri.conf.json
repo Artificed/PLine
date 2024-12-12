@@ -14,7 +14,8 @@
       {
         "title": "pline",
         "width": 605,
-        "height": 445
+        "height": 415,
+        "resizable": false
       }
     ],
     "security": {
