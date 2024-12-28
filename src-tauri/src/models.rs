@@ -11,4 +11,5 @@ pub use chat::Chat;
 pub use friend::Friend;
 pub use message::Message;
 pub use message_text::MessageText;
+pub use user::CurrentUser;
 pub use user::User;

@@ -10,3 +10,7 @@ pub struct User {
     pub user_email: String,
     pub user_birthday: NaiveDate,
 }
+
+pub struct CurrentUser {
+    pub user: Option<User>,
+}

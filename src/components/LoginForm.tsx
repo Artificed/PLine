@@ -1,6 +1,18 @@
+import { useState } from "react";
 import logo from "../assets/images/logos/line.svg";
+import { invoke } from "@tauri-apps/api/core";
 
 const LoginForm: React.FC = () => {
+  const email = useState("");
+  const password = useState("");
+
+  const login = async () => {
+    await invoke("validate_login", {
+      userEmail: "user1@example.com",
+      userPassword: "password123",
+    });
+  };
+
   return (
     <div className="w-[64%] border-r border-white/10 flex flex-col items-center text-white text-xs font-extralight">
       <img src={logo} className="h-[4.1rem] w-[4.1rem] mb-4 mt-9" />
@@ -19,6 +31,7 @@ const LoginForm: React.FC = () => {
       <button
         type="submit"
         className="bg-white bg-opacity-65 w-[17rem] h-[2.6rem] my-[0.6rem] rounded-[0.25rem]"
+        onClick={login}
       >
         Login
       </button>
