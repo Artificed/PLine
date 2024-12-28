@@ -3,12 +3,8 @@ CREATE TABLE messages (
   message_chat_id VARCHAR(36) NOT NULL,
   message_sender_id VARCHAR(36) NOT NULL,
   message_type VARCHAR(255) NOT NULL,
-  message_content TEXT,
-  message_image TEXT,
-  message_video TEXT,
-  message_file TEXT,
   message_sent_time DATE,
-  message_read INT, 
+  message_read INT,
 
   CONSTRAINT chk_message_read CHECK (message_read IN (0, 1)),
   CONSTRAINT chk_message_type CHECK (message_type IN ('Text', 'Image', 'Video', 'File')),

@@ -3,6 +3,9 @@
 USER="root"
 DB="PLine"
 PASSWORD=""
+SEEDING_DIR="./seeding"
 
-echo "Seeding..."
-mysql -u $USER $PASSWORD $DB <"../seeding/seed.sql"
+for file in $(ls $SEEDING_DIR/*.sql | sort); do
+  echo "Seeding: $file"
+  mysql -u $USER $PASSWORD $DB <$file
+done
