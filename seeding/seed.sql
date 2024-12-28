@@ -4,7 +4,7 @@ VALUES
 (UUID(), 'user2_line_id', 'password123', 'User Two', 'Hi there!', 'user2@example.com', '1992-02-02'),
 (UUID(), 'user3_line_id', 'password123', 'User Three', 'Having a great day!', 'user3@example.com', '1993-03-03');
 
-INSERT INTO chats (chat_id, chat_name, chat_type) 
+INSERT INTO chats (chat_id, chat_name, chat_type)
 VALUES
 (UUID(), 'Chat 1', 'Direct'),
 (UUID(), 'Group Chat 1', 'Group'),
