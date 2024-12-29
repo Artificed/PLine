@@ -8,7 +8,6 @@ pub mod utils;
 
 use std::sync::Mutex;
 
-pub use controllers::auth_controller;
 pub use controllers::chat_controller;
 pub use controllers::friend_controller;
 pub use controllers::message_controller;
@@ -27,7 +26,7 @@ pub use repositories::friend_repository;
 pub use repositories::message_repository;
 pub use repositories::user_repository;
 
-use tauri::Manager;
+pub use tauri::Manager;
 pub use utils::connect;
 
 #[tauri::command]

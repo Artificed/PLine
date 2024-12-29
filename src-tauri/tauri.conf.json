@@ -19,7 +19,22 @@
       }
     ],
     "security": {
-      "csp": null
+      "csp": null,
+      "capabilities": [
+        {
+          "identifier": "window-capability",
+          "description": "Capability for window operations",
+          "windows": ["*"],
+          "permissions": [
+            "core:window:default",
+            "core:window:allow-set-position",
+            "core:window:allow-set-size",
+            "core:window:allow-set-resizable",
+            "core:window:allow-create",
+            "core:window:allow-set-title"
+          ]
+        }
+      ]
     }
   },
   "bundle": {

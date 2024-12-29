@@ -1,4 +1,3 @@
-pub mod auth_controller;
 pub mod chat_controller;
 pub mod friend_controller;
 pub mod message_controller;
