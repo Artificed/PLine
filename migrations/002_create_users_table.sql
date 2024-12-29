@@ -5,5 +5,6 @@ CREATE TABLE users (
   user_display_name VARCHAR(255),
   user_status_message VARCHAR(255),
   user_email VARCHAR(255),
-  user_birthday DATE
+  user_birthday DATE,
+  user_profile_picture VARCHAR(255)
 );
