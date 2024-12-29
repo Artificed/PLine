@@ -4,6 +4,11 @@ use tauri::State;
 use crate::{user_repository, CurrentUser};
 
 #[tauri::command]
+pub fn is_logged_in(current_user: State<'_, Mutex<CurrentUser>>) -> bool {
+    current_user.lock().unwrap().user.is_some()
+}
+
+#[tauri::command]
 pub fn validate_login(
     current_user: State<'_, Mutex<CurrentUser>>,
     user_email: String,

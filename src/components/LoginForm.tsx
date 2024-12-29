@@ -3,12 +3,11 @@ import logo from "../assets/images/logos/line.svg";
 import { invoke } from "@tauri-apps/api/core";
 import {
   getCurrentWindow,
-  LogicalSize,
   currentMonitor,
   PhysicalSize,
-  LogicalPosition,
   PhysicalPosition,
 } from "@tauri-apps/api/window";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm: React.FC = () => {
   const [form, setForm] = useState({
@@ -16,14 +15,16 @@ const LoginForm: React.FC = () => {
     password: "",
   });
 
-  const [formEmpty, setFormEmpty] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
-
   const checkFormEmpty = () => {
     form.email == "" && form.password == ""
       ? setFormEmpty(true)
       : setFormEmpty(false);
   };
+
+  const [formEmpty, setFormEmpty] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     checkFormEmpty();
@@ -35,22 +36,25 @@ const LoginForm: React.FC = () => {
       userPassword: form.password,
     });
 
-    if (loginSuccess) {
-      setErrorMessage("");
-      let monitor = await currentMonitor();
-      let width = monitor?.size.width;
-      let height = monitor?.size.height;
-      if (height && width) {
-        await getCurrentWindow().setPosition(new PhysicalPosition(0, 0));
-        await getCurrentWindow().setSize(
-          new PhysicalSize(Math.floor(width * 0.6), height - 76), // 76 to avoid menubar, currently hardcoded
-        );
-      }
-    } else {
+    if (!loginSuccess) {
       setErrorMessage(
         "Email address or password is either incorrect or not registered with LINE.",
       );
+      return;
     }
+
+    setErrorMessage("");
+    let monitor = await currentMonitor();
+    let width = monitor?.size.width;
+    let height = monitor?.size.height;
+    if (height && width) {
+      await getCurrentWindow().setPosition(new PhysicalPosition(0, 0));
+      await getCurrentWindow().setSize(
+        new PhysicalSize(Math.floor(width * 0.65), height - 76), // 76 to avoid menubar, currently hardcoded
+      );
+    }
+
+    navigate("/");
   };
 
   return (
