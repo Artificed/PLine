@@ -8,7 +8,7 @@ const ChatList: React.FC = () => {
       style={{ height: "calc(100vh - 3rem)" }}
     >
       <ChatSearch />
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto scrollbar-webkit custom-scrollbar">
         {Array.from({ length: 14 }).map((_, index) => (
           <ChatDisplay key={index} />
         ))}
