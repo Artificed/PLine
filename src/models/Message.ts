@@ -1,8 +1,8 @@
 interface Message {
-  messageId: String;
-  messageChatId: String;
-  messageSenderId: String;
-  messageType: String;
+  messageId: string;
+  messageChatId: string;
+  messageSenderId: string;
+  messageType: string;
   messageSentTime: Date;
   messageRead: boolean;
 }

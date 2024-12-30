@@ -1,4 +1,4 @@
 interface Friend {
-  userId: String;
-  friendId: String;
+  userId: string;
+  friendId: string;
 }

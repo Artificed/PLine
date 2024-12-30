@@ -1,4 +1,4 @@
 interface MessageImage {
-  messageId: String;
-  messageImage: String;
+  messageId: string;
+  messageImage: string;
 }

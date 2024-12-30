@@ -1,6 +1,6 @@
 interface Chat {
-  chatId: String;
-  chatName: String;
-  chatType: String;
+  chatId: string;
+  chatName: string;
+  chatType: string;
   chatImage: File;
 }

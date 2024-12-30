@@ -1,4 +1,4 @@
 interface MessageText {
-  messageId: String;
-  messageText: String;
+  messageId: string;
+  messageText: string;
 }

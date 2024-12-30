@@ -1,4 +1,4 @@
 interface MessageFile {
-  messageId: String;
-  messageFile: String;
+  messageId: string;
+  messageFile: string;
 }

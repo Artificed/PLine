@@ -1,4 +1,4 @@
 interface MessageVideo {
-  messageId: String;
-  messageVideo: String;
+  messageId: string;
+  messageVideo: string;
 }

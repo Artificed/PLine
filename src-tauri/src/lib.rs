@@ -1,10 +1,13 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 
 pub mod controllers;
+pub mod dtos;
 pub mod enums;
 pub mod models;
 pub mod repositories;
+pub mod services;
 pub mod utils;
+pub mod viewmodels;
 
 use std::sync::Mutex;
 
@@ -12,6 +15,9 @@ pub use controllers::chat_controller;
 pub use controllers::friend_controller;
 pub use controllers::message_controller;
 pub use controllers::user_controller;
+
+pub use dtos::ChatPreviewChatDTO;
+pub use dtos::ChatPreviewMessageDTO;
 
 pub use enums::ChatType;
 
@@ -26,8 +32,12 @@ pub use repositories::friend_repository;
 pub use repositories::message_repository;
 pub use repositories::user_repository;
 
+pub use services::chat_preview_service;
+
 pub use tauri::Manager;
 pub use utils::connect;
+
+pub use viewmodels::ChatPreview;
 
 #[tauri::command]
 fn greet(name: &str) -> String {

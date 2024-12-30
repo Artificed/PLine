@@ -1,7 +1,9 @@
 import ChatSearch from "../../components/ChatSearch";
-import ChatDisplay from "../../components/ChatDisplay";
+import ChatPreview from "../../components/ChatPreview";
 
 const ChatList: React.FC = () => {
+  const fetchData = async () => {};
+
   return (
     <div
       className="flex flex-col w-1/2 overflow-y-auto border-r border-white/10"
@@ -9,8 +11,13 @@ const ChatList: React.FC = () => {
     >
       <ChatSearch />
       <div className="flex-1 overflow-y-auto scrollbar-webkit custom-scrollbar">
-        {Array.from({ length: 14 }).map((_, index) => (
-          <ChatDisplay key={index} />
+        {Array.from({ length: 14 }).map(() => (
+          <ChatPreview
+            chatName="Keep Memo"
+            chatImage="../../assets/images/defaults/DefaultPfp.jpg"
+            lastMessageContent="Test"
+            lastMessageTime="10:37 PM"
+          />
         ))}
       </div>
     </div>

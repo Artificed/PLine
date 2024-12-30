@@ -1,9 +1,9 @@
 interface User {
-  userId: String;
-  userLineId: String;
-  userPassword: String;
-  userDisplayName: String;
-  userStatusMessage: String;
-  userEmail: String;
+  userId: string;
+  userLineId: string;
+  userPassword: string;
+  userDisplayName: string;
+  userStatusMessage: string;
+  userEmail: string;
   userBirthday: Date;
 }
