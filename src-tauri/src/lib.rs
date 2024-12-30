@@ -1,5 +1,7 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 
+use std::sync::Mutex;
+
 pub mod controllers;
 pub mod dtos;
 pub mod enums;
@@ -8,8 +10,6 @@ pub mod repositories;
 pub mod services;
 pub mod utils;
 pub mod viewmodels;
-
-use std::sync::Mutex;
 
 pub use controllers::chat_controller;
 pub use controllers::friend_controller;
@@ -22,6 +22,7 @@ pub use dtos::ChatPreviewMessageDTO;
 pub use enums::ChatType;
 
 pub use models::Chat;
+pub use models::ChatUser;
 pub use models::CurrentUser;
 pub use models::Friend;
 pub use models::Message;
