@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { useNavigate } from "react-router-dom";
 import ChatSection from "../layouts/chat/ChatSection";
@@ -6,6 +6,7 @@ import SideMenu from "../layouts/menus/SideMenu";
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -13,18 +14,15 @@ const HomePage: React.FC = () => {
       if (!isLoggedIn) {
         navigate("/login");
       } else {
-        getChatPreviews();
+        setLoggedIn(true);
       }
     };
-
-    const getChatPreviews = async () => {
-      console.log("Executing GetChatPreviews");
-      let chatPreviews = await invoke("get_chat_previews");
-      console.log(chatPreviews);
-    };
-
     checkLogin();
   }, []);
+
+  if (isLoggedIn === false) {
+    return null;
+  }
 
   return (
     <div className="flex h-screen">

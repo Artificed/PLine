@@ -1,8 +1,18 @@
 import ChatSearch from "../../components/ChatSearch";
 import ChatPreview from "../../components/ChatPreview";
+import { invoke } from "@tauri-apps/api/core";
+import { useEffect, useState } from "react";
 
 const ChatList: React.FC = () => {
-  const fetchData = async () => {};
+  const [chatPreviews, setChatPreviews] = useState<ChatPreviewViewModel[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let data = await invoke<ChatPreviewViewModel[]>("get_chat_previews");
+      setChatPreviews(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div
@@ -11,12 +21,12 @@ const ChatList: React.FC = () => {
     >
       <ChatSearch />
       <div className="flex-1 overflow-y-auto scrollbar-webkit custom-scrollbar">
-        {Array.from({ length: 14 }).map(() => (
+        {chatPreviews.map((chatPreview) => (
           <ChatPreview
-            chatName="Keep Memo"
-            chatImage="../../assets/images/defaults/DefaultPfp.jpg"
-            lastMessageContent="Test"
-            lastMessageTime="10:37 PM"
+            chatName={chatPreview.chatName}
+            chatImage={chatPreview.chatImage}
+            lastMessageContent={chatPreview.lastMessageContent}
+            lastMessageTime={chatPreview.lastMessageTime}
           />
         ))}
       </div>
