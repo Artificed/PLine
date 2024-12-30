@@ -1,6 +1,6 @@
 pub enum MessageType {
     Text,
     Image,
-    View,
+    Video,
     File,
 }

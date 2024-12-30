@@ -3,8 +3,8 @@ use std::sync::Mutex;
 use tauri::State;
 
 use crate::{
-    chat_repository, chat_user_repository, message_repository, user_repository, ChatPreview,
-    ChatPreviewChatDTO, CurrentUser,
+    chat_repository, chat_user_repository, message_repository, message_text_repository,
+    user_repository, ChatPreview, ChatPreviewChatDTO, ChatPreviewMessageDTO, CurrentUser, User,
 };
 
 fn format_last_message(message_time: NaiveDateTime) -> String {
@@ -18,6 +18,32 @@ fn format_last_message(message_time: NaiveDateTime) -> String {
         message_time.format("%A").to_string()
     } else {
         message_time.format("%b %e").to_string()
+    }
+}
+
+fn format_last_message_content(
+    current_user: &User,
+    preview_message_dto: &ChatPreviewMessageDTO,
+) -> String {
+    let mut message_type = preview_message_dto.message_content.clone();
+
+    if message_type == "Text" {
+        message_text_repository::get_message_text(&preview_message_dto.message_id)
+    } else {
+        let mut sender_name =
+            user_repository::get_display_name_by_id(&preview_message_dto.message_sender_id);
+
+        if sender_name == current_user.user_display_name {
+            sender_name = String::from("You");
+        }
+
+        if message_type == "Image" {
+            message_type = String::from("photo");
+        } else {
+            message_type = message_type.to_lowercase()
+        }
+
+        format!("{} sent a {}.", sender_name, message_type)
     }
 }
 
@@ -44,7 +70,10 @@ pub fn get_chat_previews(current_user: State<'_, Mutex<CurrentUser>>) -> Vec<Cha
             ChatPreview {
                 chat_name: chat_preview_chat_data.chat_name,
                 chat_image: chat_preview_chat_data.chat_image,
-                last_message_content: chat_preview_message_data.message_content,
+                last_message_content: format_last_message_content(
+                    &user,
+                    &chat_preview_message_data,
+                ),
                 last_message_time: format_last_message(chat_preview_message_data.message_time),
             }
         })

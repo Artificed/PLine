@@ -1,5 +1,3 @@
-// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-
 use std::sync::Mutex;
 
 pub mod controllers;
@@ -32,6 +30,7 @@ pub use repositories::chat_repository;
 pub use repositories::chat_user_repository;
 pub use repositories::friend_repository;
 pub use repositories::message_repository;
+pub use repositories::message_text_repository;
 pub use repositories::user_repository;
 
 pub use services::chat_preview_service;
@@ -40,11 +39,6 @@ pub use tauri::Manager;
 pub use utils::connect;
 
 pub use viewmodels::ChatPreview;
-
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -56,7 +50,6 @@ pub fn run() {
         .plugin(tauri_plugin_sql::Builder::new().build())
         .plugin(tauri_plugin_shell::init())
         .invoke_handler(tauri::generate_handler![
-            greet,
             user_controller::validate_login,
             user_controller::is_logged_in,
             chat_preview_service::get_chat_previews,
