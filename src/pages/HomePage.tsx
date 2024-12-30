@@ -12,7 +12,15 @@ const HomePage: React.FC = () => {
       let isLoggedIn = await invoke("is_logged_in");
       if (!isLoggedIn) {
         navigate("/login");
+      } else {
+        getChatPreviews();
       }
+    };
+
+    const getChatPreviews = async () => {
+      console.log("Executing GetChatPreviews");
+      let chatPreviews = await invoke("get_chat_previews");
+      console.log(chatPreviews);
     };
 
     checkLogin();

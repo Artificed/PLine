@@ -1,6 +1,7 @@
 use chrono::NaiveDate;
 use uuid::Uuid;
 
+#[derive(Clone)]
 pub struct User {
     pub user_id: Uuid,
     pub user_line_id: String,

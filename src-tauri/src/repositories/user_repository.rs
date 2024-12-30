@@ -1,10 +1,11 @@
-use std::str::FromStr;
+use std::{str::FromStr, sync::Mutex};
 
 use chrono::NaiveDate;
 use mysql::{prelude::Queryable, Error, Result};
+use tauri::State;
 use uuid::Uuid;
 
-use crate::{connect, User};
+use crate::{connect, CurrentUser, User};
 
 pub fn get_users() -> Result<Vec<User>, Error> {
     connect::get_conn()
@@ -41,4 +42,8 @@ pub fn get_users() -> Result<Vec<User>, Error> {
                 user_profile_picture,
             },
         )
+}
+
+pub fn get_current_user(current_user: State<'_, Mutex<CurrentUser>>) -> Option<User> {
+    current_user.lock().unwrap().user.clone()
 }

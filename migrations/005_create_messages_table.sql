@@ -3,7 +3,7 @@ CREATE TABLE messages (
   message_chat_id VARCHAR(36) NOT NULL,
   message_sender_id VARCHAR(36) NOT NULL,
   message_type VARCHAR(255) NOT NULL,
-  message_sent_time DATE,
+  message_sent_time DATETIME,
   message_read INT,
 
   CONSTRAINT chk_message_read CHECK (message_read IN (0, 1)),

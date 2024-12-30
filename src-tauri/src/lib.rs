@@ -29,6 +29,7 @@ pub use models::Message;
 pub use models::User;
 
 pub use repositories::chat_repository;
+pub use repositories::chat_user_repository;
 pub use repositories::friend_repository;
 pub use repositories::message_repository;
 pub use repositories::user_repository;
@@ -58,6 +59,7 @@ pub fn run() {
             greet,
             user_controller::validate_login,
             user_controller::is_logged_in,
+            chat_preview_service::get_chat_previews,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
