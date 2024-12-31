@@ -59,8 +59,6 @@ pub fn get_chat_previews(current_user: State<'_, Mutex<CurrentUser>>) -> Vec<Cha
             .filter(|chat_preview_dto| user_chat_ids.contains(&chat_preview_dto.chat_id))
             .collect();
 
-    println!("{}", chat_preview_chat_datas.len());
-
     chat_preview_chat_datas
         .into_iter()
         .map(|chat_preview_chat_data| {
@@ -68,6 +66,7 @@ pub fn get_chat_previews(current_user: State<'_, Mutex<CurrentUser>>) -> Vec<Cha
                 chat_preview_chat_data.chat_id.as_str(),
             );
             ChatPreview {
+                chat_id: chat_preview_chat_data.chat_id,
                 chat_name: chat_preview_chat_data.chat_name,
                 chat_image: chat_preview_chat_data.chat_image,
                 last_message_content: format_last_message_content(

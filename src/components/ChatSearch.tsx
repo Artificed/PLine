@@ -1,6 +1,6 @@
 const ChatSearch: React.FC = () => {
   return (
-    <div className="flex items-center mt-4 ml-3 mb-1 gap-3">
+    <div className="flex items-center mt-4 ml-3 mb-1 gap-3 h-max">
       <div className="flex mb-1 px-2 py-2 w-5/6 rounded-md items-center gap-2 bg-white bg-opacity-15">
         <svg
           xmlns="http://www.w3.org/2000/svg"

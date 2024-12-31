@@ -1,7 +1,11 @@
 import ChatHeader from "../../components/ChatHeader";
 import ChatTextBox from "../../components/ChatTextBox";
 
-const ChatContent: React.FC = () => {
+interface ChatContentProps {
+  chat_id: string | null;
+}
+
+const ChatContent: React.FC<ChatContentProps> = ({ chat_id }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <ChatHeader />

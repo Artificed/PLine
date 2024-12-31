@@ -1,20 +1,28 @@
-const ChatPreview: React.FC<ChatPreviewViewModel> = ({
-  chatName,
-  chatImage,
-  lastMessageContent,
-  lastMessageTime,
+interface ChatPreviewProps {
+  chatPreviewViewModel: ChatPreviewViewModel;
+  isSelected: boolean;
+}
+
+const ChatPreview: React.FC<ChatPreviewProps> = ({
+  chatPreviewViewModel,
+  isSelected,
 }) => {
   return (
-    <div className="flex h-[4.4rem] text-white font-extralight">
-      <img src={chatImage} className="rounded-full m-2.5 ml-[1.1rem] mr-3.5" />
+    <div
+      className={`flex h-[4.4rem] w-full text-white font-extralight ${isSelected ? "bg-white/5" : ""}`}
+    >
+      <img
+        src={chatPreviewViewModel.chatImage}
+        className="rounded-full m-2.5 ml-[1.1rem] mr-3.5"
+      />
       <div className="flex flex-col justify-center gap-[0.08rem] -translate-y-0.5">
-        <p className="text-sm">{chatName}</p>
+        <p className="text-sm">{chatPreviewViewModel.chatName}</p>
         <p className="text-[0.7rem] text-white text-opacity-50">
-          {lastMessageContent}
+          {chatPreviewViewModel.lastMessageContent}
         </p>
       </div>
       <p className="text-[0.7rem] text-white text-opacity-50 mt-2.5 mr-[1.1rem] ml-auto">
-        {lastMessageTime}
+        {chatPreviewViewModel.lastMessageTime}
       </p>
     </div>
   );
