@@ -29,8 +29,11 @@ pub use models::User;
 pub use repositories::chat_repository;
 pub use repositories::chat_user_repository;
 pub use repositories::friend_repository;
+pub use repositories::message_file_repository;
+pub use repositories::message_image_repository;
 pub use repositories::message_repository;
 pub use repositories::message_text_repository;
+pub use repositories::message_video_repository;
 pub use repositories::user_repository;
 
 pub use services::chat_preview_service;

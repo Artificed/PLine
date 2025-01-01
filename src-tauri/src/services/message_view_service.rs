@@ -1,13 +1,14 @@
 use crate::{
-    enums::MessageType, message_repository, message_text_repository, user_repository, MessageView,
+    enums::MessageType, message_file_repository, message_image_repository, message_repository,
+    message_text_repository, message_video_repository, user_repository, MessageView,
 };
 
 fn get_message_content(message_id: &str, message_type: &MessageType) -> String {
     match message_type {
         MessageType::Text => message_text_repository::get_message_text(message_id),
-        MessageType::Image => String::from("Image"),
-        MessageType::Video => String::from("Video"),
-        MessageType::File => String::from("File"),
+        MessageType::Image => message_image_repository::get_message_image(message_id),
+        MessageType::Video => message_video_repository::get_message_video(message_id),
+        MessageType::File => message_file_repository::get_message_file(message_id),
     }
 }
 

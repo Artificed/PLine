@@ -1,6 +1,9 @@
 pub mod chat_repository;
 pub mod chat_user_repository;
 pub mod friend_repository;
+pub mod message_file_repository;
+pub mod message_image_repository;
 pub mod message_repository;
 pub mod message_text_repository;
+pub mod message_video_repository;
 pub mod user_repository;

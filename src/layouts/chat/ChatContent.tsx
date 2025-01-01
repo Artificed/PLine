@@ -12,6 +12,7 @@ const ChatContent: React.FC<ChatContentProps> = ({ chatId, chatName }) => {
   const [messages, setMessages] = useState<MessageViewModel[]>([]);
 
   useEffect(() => {
+    if (!chatId) return;
     const fetchData = async () => {
       let data = await invoke<MessageViewModel[]>("get_message_views", {
         chatId: chatId,
@@ -21,12 +22,22 @@ const ChatContent: React.FC<ChatContentProps> = ({ chatId, chatName }) => {
     };
 
     fetchData();
-  }, []);
+  }, [chatId]);
+
+  if (!chatId) {
+    return;
+  }
 
   return (
     <div className="w-full h-full flex flex-col">
       <ChatHeader chatName={chatName} />
-      <div className="flex-1 overflow-auto">{/* TODO: Messages Here */}</div>
+      <div className="flex-1 overflow-auto">
+        {messages.map((message: MessageViewModel) => (
+          <div>
+            <p>{message.messageContent}</p>
+          </div>
+        ))}
+      </div>
       <ChatTextBox />
     </div>
   );
