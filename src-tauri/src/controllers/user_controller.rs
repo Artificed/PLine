@@ -27,3 +27,11 @@ pub fn validate_login(
         None => false,
     }
 }
+
+#[tauri::command]
+pub fn get_current_user_id(current_user: State<'_, Mutex<CurrentUser>>) -> String {
+    user_repository::get_current_user(current_user)
+        .expect("Failed to get current user!")
+        .user_id
+        .to_string()
+}

@@ -57,6 +57,7 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             user_controller::validate_login,
             user_controller::is_logged_in,
+            user_controller::get_current_user_id,
             chat_preview_service::get_chat_previews,
             message_view_service::get_message_views,
         ])

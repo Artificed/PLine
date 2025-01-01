@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import ChatHeader from "../chat/ChatHeader";
 import ChatTextBox from "../../components/chat/ChatTextBox";
 import { invoke } from "@tauri-apps/api/core";
+import ReceiveMessage from "../../components/message/ReceiveMessage";
+import SendMessage from "../../components/message/SendMessage";
 
 interface ChatContentProps {
   chatId: string | null;
@@ -10,18 +12,25 @@ interface ChatContentProps {
 
 const ChatContent: React.FC<ChatContentProps> = ({ chatId, chatName }) => {
   const [messages, setMessages] = useState<MessageViewModel[]>([]);
+  const [currentUserId, setCurrentUserId] = useState("");
 
   useEffect(() => {
     if (!chatId) return;
-    const fetchData = async () => {
+
+    const fetchMessageData = async () => {
       let data = await invoke<MessageViewModel[]>("get_message_views", {
         chatId: chatId,
       });
-      console.log(data);
       setMessages(data);
     };
 
-    fetchData();
+    const fetchCurrentUserData = async () => {
+      let data = await invoke<string>("get_current_user_id");
+      setCurrentUserId(data);
+    };
+
+    fetchMessageData();
+    fetchCurrentUserData();
   }, [chatId]);
 
   if (!chatId) {
@@ -31,12 +40,14 @@ const ChatContent: React.FC<ChatContentProps> = ({ chatId, chatName }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <ChatHeader chatName={chatName} />
-      <div className="flex-1 overflow-auto">
-        {messages.map((message: MessageViewModel) => (
-          <div>
-            <p>{message.messageContent}</p>
-          </div>
-        ))}
+      <div className="flex-1 overflow-auto px-3">
+        {messages.map((message: MessageViewModel) =>
+          message.senderId === currentUserId ? (
+            <SendMessage message={message} />
+          ) : (
+            <ReceiveMessage message={message} />
+          ),
+        )}
       </div>
       <ChatTextBox />
     </div>
