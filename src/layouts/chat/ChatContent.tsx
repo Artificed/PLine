@@ -9,6 +9,20 @@ interface ChatContentProps {
 }
 
 const ChatContent: React.FC<ChatContentProps> = ({ chatId, chatName }) => {
+  const [messages, setMessages] = useState<MessageViewModel[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let data = await invoke<MessageViewModel[]>("get_message_views", {
+        chatId: chatId,
+      });
+      console.log(data);
+      setMessages(data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="w-full h-full flex flex-col">
       <ChatHeader chatName={chatName} />

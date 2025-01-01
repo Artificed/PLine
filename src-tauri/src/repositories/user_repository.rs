@@ -70,10 +70,10 @@ pub fn get_message_view_sender_data(sender_id: &str) -> MessageViewSenderDTO {
             params! {"id" => sender_id},
         )
         .expect("Failed to get data!")
-        .map(|row: MessageViewSenderDTO| MessageViewSenderDTO {
-            sender_id: row.sender_id,
-            sender_name: row.sender_name,
-            sender_image: row.sender_image,
+        .map(|row: (String, String, String)| MessageViewSenderDTO {
+            sender_id: row.0,
+            sender_name: row.1,
+            sender_image: row.2,
         })
         .expect("Failed to map data!")
 }
