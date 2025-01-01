@@ -21,7 +21,6 @@ pub fn validate_login(
 
     match user {
         Some(user) => {
-            println!("Logged in!");
             current_user.lock().unwrap().user = Some(user);
             true
         }

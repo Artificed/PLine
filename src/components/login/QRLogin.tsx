@@ -1,5 +1,5 @@
 import { open } from "@tauri-apps/plugin-shell";
-import login_qr from "../assets/images/defaults/login_qr.png";
+import login_qr from "../../assets/images/defaults/login_qr.png";
 
 const QRLogin: React.FC = () => {
   const openLineHelp = async () => {

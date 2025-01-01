@@ -1,5 +1,5 @@
-import ChatSearch from "../../components/ChatSearch";
-import ChatPreview from "../../components/ChatPreview";
+import ChatSearch from "../../components/chat/ChatSearch";
+import ChatPreview from "../../components/chat/ChatPreview";
 
 interface ChatListProps {
   chatPreviews: ChatPreviewViewModel[];

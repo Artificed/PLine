@@ -1,5 +1,5 @@
-import LoginForm from "../components/LoginForm";
-import QRLogin from "../components/QRLogin";
+import LoginForm from "../components/login/LoginForm";
+import QRLogin from "../components/login/QRLogin";
 
 const LoginPage: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "../assets/images/logos/line.svg";
+import logo from "../../assets/images/logos/line.svg";
 import { invoke } from "@tauri-apps/api/core";
 import {
   getCurrentWindow,
