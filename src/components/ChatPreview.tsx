@@ -1,14 +1,17 @@
 interface ChatPreviewProps {
   chatPreviewViewModel: ChatPreviewViewModel;
   isSelected: boolean;
+  onPreviewClicked: () => void;
 }
 
 const ChatPreview: React.FC<ChatPreviewProps> = ({
   chatPreviewViewModel,
   isSelected,
+  onPreviewClicked,
 }) => {
   return (
     <div
+      onClick={onPreviewClicked}
       className={`flex h-[4.4rem] w-full text-white font-extralight ${isSelected ? "bg-white/5" : ""}`}
     >
       <img

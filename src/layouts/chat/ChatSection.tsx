@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import TopMenu from "../menus/TopMenu";
 import ChatContent from "./ChatContent";
 import ChatList from "./ChatList";
@@ -19,6 +19,10 @@ const ChatSection: React.FC = () => {
     fetchData();
   }, []);
 
+  const handlePreviewClick = useCallback((index: number) => {
+    setSelectedChatIdx(index);
+  }, []);
+
   return (
     <div className="bg-[#2D2E30] flex-1 flex flex-col h-full">
       <TopMenu />
@@ -26,6 +30,7 @@ const ChatSection: React.FC = () => {
         <ChatList
           chatPreviews={chatPreviews}
           selectedChatIdx={selectedChatIdx}
+          onPreviewClicked={handlePreviewClick}
         />
         <ChatContent
           chatId={chatPreviews[selectedChatIdx]?.chatId}

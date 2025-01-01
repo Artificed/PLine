@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import ChatHeader from "../../components/ChatHeader";
 import ChatTextBox from "../../components/ChatTextBox";
+import { invoke } from "@tauri-apps/api/core";
 
 interface ChatContentProps {
   chatId: string | null;
