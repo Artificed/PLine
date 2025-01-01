@@ -3,12 +3,12 @@ import ChatPreview from "../../components/ChatPreview";
 
 interface ChatListProps {
   chatPreviews: ChatPreviewViewModel[];
-  selectedChatId: string | null;
+  selectedChatIdx: number | null;
 }
 
 const ChatList: React.FC<ChatListProps> = ({
   chatPreviews,
-  selectedChatId,
+  selectedChatIdx,
 }) => {
   return (
     <div
@@ -17,10 +17,10 @@ const ChatList: React.FC<ChatListProps> = ({
     >
       <ChatSearch />
       <div className="flex-1 overflow-y-auto scrollbar-webkit custom-scrollbar relative right-0">
-        {chatPreviews.map((chatPreview) => (
+        {chatPreviews.map((chatPreview, index) => (
           <ChatPreview
             chatPreviewViewModel={chatPreview}
-            isSelected={chatPreview.chatId === selectedChatId}
+            isSelected={index === selectedChatIdx}
           />
         ))}
       </div>

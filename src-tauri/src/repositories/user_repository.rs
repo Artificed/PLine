@@ -5,7 +5,7 @@ use mysql::{params, prelude::Queryable, Error, Result};
 use tauri::State;
 use uuid::Uuid;
 
-use crate::{connect, CurrentUser, User};
+use crate::{connect, dtos::MessageViewSenderDTO, CurrentUser, User};
 
 pub fn get_users() -> Result<Vec<User>, Error> {
     connect::get_conn()
@@ -58,4 +58,22 @@ pub fn get_display_name_by_id(user_id: &str) -> String {
 
 pub fn get_current_user(current_user: State<'_, Mutex<CurrentUser>>) -> Option<User> {
     current_user.lock().unwrap().user.clone()
+}
+
+pub fn get_message_view_sender_data(sender_id: &str) -> MessageViewSenderDTO {
+    connect::get_conn()
+        .expect("Failed to get connection!")
+        .exec_first(
+            "SELECT user_id, user_display_name, user_profile_picture
+            FROM users
+            WHERE user_id = :id",
+            params! {"id" => sender_id},
+        )
+        .expect("Failed to get data!")
+        .map(|row: MessageViewSenderDTO| MessageViewSenderDTO {
+            sender_id: row.sender_id,
+            sender_name: row.sender_name,
+            sender_image: row.sender_image,
+        })
+        .expect("Failed to map data!")
 }

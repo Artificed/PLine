@@ -1,8 +1,12 @@
-const ChatHeader: React.FC = () => {
+interface ChatHeaderProps {
+  chatName: string | null;
+}
+
+const ChatHeader: React.FC<ChatHeaderProps> = ({ chatName }) => {
   return (
     <div className="flex items-center h-10 w-full mt-3 pl-4 text-white text-sm font-extralight">
       <div>
-        <p>Keep Memo (101)</p>
+        <p>{chatName}</p>
       </div>
       <div className="flex items-center justify-end gap-3.5 flex-1 mr-2">
         <svg

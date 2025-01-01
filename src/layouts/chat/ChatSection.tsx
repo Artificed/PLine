@@ -6,14 +6,14 @@ import { invoke } from "@tauri-apps/api/core";
 
 const ChatSection: React.FC = () => {
   const [chatPreviews, setChatPreviews] = useState<ChatPreviewViewModel[]>([]);
-  const [selectedChatId, setSelectedChatId] = useState<string>();
+  const [selectedChatIdx, setSelectedChatIdx] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
       let data = await invoke<ChatPreviewViewModel[]>("get_chat_previews");
       setChatPreviews(data);
       if (data.length > 0) {
-        setSelectedChatId(data[0].chatId);
+        setSelectedChatIdx(0);
       }
     };
     fetchData();
@@ -25,9 +25,12 @@ const ChatSection: React.FC = () => {
       <div className="flex-1 flex">
         <ChatList
           chatPreviews={chatPreviews}
-          selectedChatId={selectedChatId || null}
+          selectedChatIdx={selectedChatIdx}
         />
-        <ChatContent chat_id={selectedChatId || null} />
+        <ChatContent
+          chatId={chatPreviews[selectedChatIdx]?.chatId}
+          chatName={chatPreviews[selectedChatIdx]?.chatName}
+        />
       </div>
     </div>
   );

@@ -35,10 +35,12 @@ pub use repositories::user_repository;
 
 pub use services::chat_preview_service;
 
+use services::message_view_service;
 pub use tauri::Manager;
 pub use utils::connect;
 
 pub use viewmodels::ChatPreview;
+pub use viewmodels::MessageView;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -53,6 +55,7 @@ pub fn run() {
             user_controller::validate_login,
             user_controller::is_logged_in,
             chat_preview_service::get_chat_previews,
+            message_view_service::get_message_views,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
