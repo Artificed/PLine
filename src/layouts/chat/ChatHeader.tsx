@@ -1,6 +1,4 @@
-interface ChatHeaderProps {
-  chatName: string | null;
-}
+import ChatHeaderProps from "../../props/ChatHeaderProps";
 
 const ChatHeader: React.FC<ChatHeaderProps> = ({ chatName }) => {
   return (

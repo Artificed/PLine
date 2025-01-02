@@ -4,3 +4,5 @@ interface Chat {
   chatType: string;
   chatImage: File;
 }
+
+export default Chat;

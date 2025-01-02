@@ -6,3 +6,5 @@ interface Message {
   messageSentTime: Date;
   messageRead: boolean;
 }
+
+export default Message;

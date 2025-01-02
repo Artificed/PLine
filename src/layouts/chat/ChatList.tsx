@@ -1,11 +1,7 @@
 import ChatSearch from "../../components/chat/ChatSearch";
 import ChatPreview from "../../components/chat/ChatPreview";
-
-interface ChatListProps {
-  chatPreviews: ChatPreviewViewModel[];
-  selectedChatIdx: number | null;
-  onPreviewClicked: (index: number) => void;
-}
+import ChatListProps from "../../props/ChatListProps";
+import ChatPreviewViewModel from "../../viewmodels/ChatPreviewViewModel";
 
 const ChatList: React.FC<ChatListProps> = ({
   chatPreviews,

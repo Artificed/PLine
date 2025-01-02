@@ -5,3 +5,5 @@ interface ChatPreviewViewModel {
   lastMessageContent: string;
   lastMessageTime: string;
 }
+
+export default ChatPreviewViewModel;

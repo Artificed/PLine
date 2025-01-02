@@ -27,3 +27,4 @@ tauri-plugin-sql = { version = "2", features = ["mysql"] }
 mysql="*"
 chrono="*"
 uuid="*"
+tauri-plugin-websocket = "2"

@@ -4,11 +4,8 @@ import ChatTextBox from "../../components/chat/ChatTextBox";
 import { invoke } from "@tauri-apps/api/core";
 import ReceiveMessage from "../../components/message/ReceiveMessage";
 import SendMessage from "../../components/message/SendMessage";
-
-interface ChatContentProps {
-  chatId: string | null;
-  chatName: string | null;
-}
+import ChatContentProps from "../../props/ChatContentProps";
+import MessageViewModel from "../../viewmodels/MessageViewModel";
 
 const ChatContent: React.FC<ChatContentProps> = ({ chatId, chatName }) => {
   const [messages, setMessages] = useState<MessageViewModel[]>([]);

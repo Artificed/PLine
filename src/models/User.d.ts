@@ -7,3 +7,5 @@ interface User {
   userEmail: string;
   userBirthday: Date;
 }
+
+export default User;

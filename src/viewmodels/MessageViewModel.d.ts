@@ -6,3 +6,5 @@ interface MessageViewModel {
   messageContent: string;
   messageTime: Date;
 }
+
+export default MessageViewModel;

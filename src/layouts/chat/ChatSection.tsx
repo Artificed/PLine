@@ -3,6 +3,7 @@ import TopMenu from "../menus/TopMenu";
 import ChatContent from "./ChatContent";
 import ChatList from "./ChatList";
 import { invoke } from "@tauri-apps/api/core";
+import ChatPreviewViewModel from "../../viewmodels/ChatPreviewViewModel";
 
 const ChatSection: React.FC = () => {
   const [chatPreviews, setChatPreviews] = useState<ChatPreviewViewModel[]>([]);

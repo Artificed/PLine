@@ -1,8 +1,6 @@
-interface ReceiveMessageProps {
-  message: MessageViewModel;
-}
+import MessageProps from "../../props/MessageProps";
 
-const ReceiveMessage: React.FC<ReceiveMessageProps> = ({ message }) => {
+const ReceiveMessage: React.FC<MessageProps> = ({ message }) => {
   const formatTime = (date: Date) => {
     return date.toLocaleString("en-US", {
       hour: "numeric",

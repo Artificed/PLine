@@ -1,8 +1,4 @@
-interface ChatPreviewProps {
-  chatPreviewViewModel: ChatPreviewViewModel;
-  isSelected: boolean;
-  onPreviewClicked: () => void;
-}
+import ChatPreviewProps from "../../props/ChatPreviewProps";
 
 const ChatPreview: React.FC<ChatPreviewProps> = ({
   chatPreviewViewModel,
