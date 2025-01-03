@@ -1,7 +1,7 @@
 use std::sync::Mutex;
 use tauri::State;
 
-use crate::{user_repository, CurrentUser};
+use crate::{user_repository, CurrentUser, User};
 
 #[tauri::command]
 pub fn is_logged_in(current_user: State<'_, Mutex<CurrentUser>>) -> bool {
@@ -26,6 +26,11 @@ pub fn validate_login(
         }
         None => false,
     }
+}
+
+#[tauri::command]
+pub fn get_current_user(current_user: State<'_, Mutex<CurrentUser>>) -> User {
+    user_repository::get_current_user(current_user).expect("Failed to get current user!")
 }
 
 #[tauri::command]

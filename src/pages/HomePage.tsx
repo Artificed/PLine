@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { useNavigate } from "react-router-dom";
 import ChatSection from "../layouts/chat/ChatSection";
 import SideMenu from "../layouts/menus/SideMenu";
+import webSocketClient from "../utils/WebSocket";
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const HomePage: React.FC = () => {
         navigate("/login");
       } else {
         setLoggedIn(true);
+        await webSocketClient.connect();
       }
     };
     checkLogin();

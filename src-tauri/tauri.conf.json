@@ -31,7 +31,9 @@
             "core:window:allow-set-size",
             "core:window:allow-set-resizable",
             "core:window:allow-create",
-            "core:window:allow-set-title"
+            "core:window:allow-set-title",
+            "websocket:allow-connect",
+            "websocket:allow-send"
           ]
         }
       ]

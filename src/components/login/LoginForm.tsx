@@ -44,9 +44,11 @@ const LoginForm: React.FC = () => {
     }
 
     setErrorMessage("");
+
     let monitor = await currentMonitor();
     let width = monitor?.size.width;
     let height = monitor?.size.height;
+
     if (height && width) {
       await getCurrentWindow().setPosition(new PhysicalPosition(0, 0));
       await getCurrentWindow().setSize(
